@@ -1,0 +1,12 @@
+<!DOCTYPE aspectj PUBLIC "-//AspectJ//DTD//EN" "http://www.aspectj.org/dtd/aspectj_1_5_0.dtd">
+<aspectj>
+    <weaver options="-Xset:weaveJavaxPackages=true">
+        <!-- every class of every module: pt.ist.socialsoftware.edition.{ldod.frontend,text,virtual,search,...} -->
+        <include within="pt.ist.socialsoftware.edition..*"/>
+        <!-- proxy classes generated at runtime by Spring (CGLIB) are not application code and fail verification when woven -->
+        <exclude within="*..*CGLIB*"/>
+    </weaver>
+    <aspects>
+      <aspect name="kieker.monitoring.probe.aspectj.operationExecution.OperationExecutionAspectFull"/>
+    </aspects>
+</aspectj>
